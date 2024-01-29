@@ -18,7 +18,6 @@ class World {
 
             let roomData = roomList[i];
             let newRoom = new Room(roomData.name, roomData.description);
-
             this.rooms[roomData.id] = newRoom;
         }
 
@@ -44,13 +43,15 @@ class World {
             let newItem;
 
             if (itemData.isFood) {
-                console.log("ERROR: Food not supported yet.");
-                // Fill this in
-                return;
+                newItem = new Food(itemData.name, itemData.description);
+                // let itemRoom = this.rooms[itemData.room]
+                // itemRoom.items.push(newItem)
             } else {
                 newItem = new Item(itemData.name, itemData.description);
+                // let itemRoom = this.rooms[itemData.room];
+                // itemRoom.items.push(newItem);
             }
-
+            
             let itemRoom = this.rooms[itemData.room];
             itemRoom.items.push(newItem);
        }

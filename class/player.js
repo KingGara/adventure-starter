@@ -32,24 +32,40 @@ class Player {
     }
 
     takeItem(itemName) {
-
-        // Fill this in
+        const roomItem = this.currentRoom.items.findIndex(item => item.name = itemName);
+        if (roomItem != -1 ) {
+            const item = this.currentRoom.items.splice(roomItem, 1)[0];
+            this.items.push(item);
+        } else {
+            return false;
+        }
 
     }
 
-    dropItem(itemName) {
 
-        // Fill this in
+    dropItem(itemName) {
+        const roomItem = this.items.findIndex(item => item.name = itemName);
+        if (roomItem != -1) {
+            const item = this.items.splice(roomItem, 1)[0];
+            this.currentRoom.items.push(item)
+        } else {
+            return false
+        }
     }
 
     eatItem(itemName) {
-        // Fill this in
-
+        const item = this.getItemByName(itemName);
+        if(item && item.eat) {
+            item.eat(this);
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    getItemByName(name) {
 
-        // Fill this in
+    getItemByName(name) {
+        return this.items.find(itemName => itemName = name);
     }
 }
 

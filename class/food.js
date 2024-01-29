@@ -1,9 +1,24 @@
+const { Item } = require('./item');
 
-// FILL THIS OUT
+class Food extends Item {
+  constructor(name, description) {
+    super(name, description)
+  }
 
-class Food {
-
+  eat(player) {
+    const index = player.items.indexOf(this);
+    if (index !== -1) {
+      player.items.splice(index, 1);
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
+
+
+
+
 
 module.exports = {
   Food,
